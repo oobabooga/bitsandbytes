@@ -7,6 +7,7 @@ import os
 
 from setuptools import find_packages, setup
 
+libs = list(glob.glob("./bitsandbytes/libbitsandbytes*.so"))
 libs = list(glob.glob("./bitsandbytes/libbitsandbytes*.*"))
 libs = [os.path.basename(p) for p in libs]
 print("libs:", libs)
@@ -18,13 +19,14 @@ def read(fname):
 
 setup(
     name=f"bitsandbytes",
-    version=f"0.41.1",
+    version="0.42.0",
     author="Tim Dettmers",
     author_email="dettmers@cs.washington.edu",
     description="k-bit optimizers and matrix multiplication routines.",
     license="MIT",
     keywords="gpu optimizers optimization 8-bit quantization compression",
     url="https://github.com/TimDettmers/bitsandbytes",
+    install_requires=['scipy'],
     packages=find_packages(),
     package_data={"": libs},
     install_requires=['scipy'],
